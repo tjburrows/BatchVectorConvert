@@ -1,5 +1,4 @@
 Batch Vector File Conversion with Inkscape
-Travis Burrows 12/10/2018
 
 This script batch converts all files of a specified extension into another file format
 in the specified directory.   This requires that inkscape is installed, and the path to the
