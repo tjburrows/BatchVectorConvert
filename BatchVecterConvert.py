@@ -1,6 +1,6 @@
 """
 Batch Vector File Conversion with Inkscape
-Travis Burrows 12/10/2018
+Travis Burrows
 
 This script batch converts all files of a specified extension (extIn) into another file format (extOut)
 in the specified directory dirConvert.   This requires that inkscape is installed, and the path to the
