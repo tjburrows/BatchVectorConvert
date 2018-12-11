@@ -49,9 +49,9 @@ else:
 #   Find files with specified extension
 files=next(os.walk(dirConvert))[2]
 toconvert = [];
-for i in range(0,len(files)):
-    if files[i].endswith(extIn):
-        toconvert.append(files[i])
+for file in files:
+    if file.endswith(extIn):
+        toconvert.append(file)
         
 #   Convert applicable files
 lenext = len(extIn)
