@@ -24,7 +24,7 @@ extIn = 'wmf'
 extOut = 'svg'
 
 #   File directory
-dirConvert = r'C:\Users\labuser\Nextcloud\ME 7751\Project\test'
+dirConvert = r'C:\path\to\directory'
 
 #   Inkscape executable path
 inkscapePath = r'C:\Program Files\Inkscape\inkscape.exe'
@@ -46,12 +46,20 @@ if extOut == 'svg':
 else:
     extOutArgument = '--export-%s=' % extOut
 
-#   Loop over files in directory and convert
+#   Find files with specified extension
 files=next(os.walk(dirConvert))[2]
+toconvert = [];
+for i in range(0,len(files)):
+    if files[i].endswith(extIn):
+        toconvert.append(files[i])
+        
+#   Convert applicable files
 lenext = len(extIn)
-for file in files:
+lenf = len(toconvert)
+for i, file in enumerate(toconvert):
+    print('Converting %d/%d:\t%s' % (i+1,lenf+1,file))
     inpath = os.path.join(dirConvert,file)
-    if inpath.endswith(extIn):
-        outpath = inpath[:-lenext] + extOut
-        commandstring = '"' + inkscapePath +   '" --file="' + inpath + '" ' + extOutArgument + '"' + outpath + '"'
-        subprocess.run(commandstring)
+    outpath = inpath[:-lenext] + extOut
+    commandstring = '"' + inkscapePath +   '" --file="' + inpath + '" ' + extOutArgument + '"' + outpath + '"'
+    subprocess.run(commandstring)
+        
