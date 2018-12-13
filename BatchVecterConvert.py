@@ -14,8 +14,9 @@ Change dirConvert to the directory of the files desired to convert.  Change inks
 of your inkscape executable. 
 """
 
-import subprocess
-import os
+from subprocess import run
+from os.path import join
+from os import walk
 
 #   Input file extension
 extIn = 'wmf'
@@ -47,7 +48,7 @@ else:
     extOutArgument = '--export-%s=' % extOut
 
 #   Find files with specified extension
-files=next(os.walk(dirConvert))[2]
+files=next(walk(dirConvert))[2]
 toConvert = [];
 for file in files:
     if file.endswith(extIn):
@@ -58,8 +59,7 @@ lenExt = len(extIn)
 lenF = len(toConvert)
 for i, file in enumerate(toConvert):
     print('Converting %d/%d:\t%s' % (i+1,lenF+1,file))
-    inPath = os.path.join(dirConvert,file)
+    inPath = join(dirConvert,file)
     outPath = inPath[:-lenExt] + extOut
     commandString = '"' + inkscapePath +   '" --file="' + inPath + '" ' + extOutArgument + '"' + outPath + '"'
-    subprocess.run(commandString)
-        
+    run(commandString)
