@@ -48,18 +48,18 @@ else:
 
 #   Find files with specified extension
 files=next(os.walk(dirConvert))[2]
-toconvert = [];
+toConvert = [];
 for file in files:
     if file.endswith(extIn):
-        toconvert.append(file)
+        toConvert.append(file)
         
 #   Convert applicable files
-lenext = len(extIn)
-lenf = len(toconvert)
-for i, file in enumerate(toconvert):
-    print('Converting %d/%d:\t%s' % (i+1,lenf+1,file))
-    inpath = os.path.join(dirConvert,file)
-    outpath = inpath[:-lenext] + extOut
-    commandstring = '"' + inkscapePath +   '" --file="' + inpath + '" ' + extOutArgument + '"' + outpath + '"'
-    subprocess.run(commandstring)
+lenExt = len(extIn)
+lenF = len(toConvert)
+for i, file in enumerate(toConvert):
+    print('Converting %d/%d:\t%s' % (i+1,lenF+1,file))
+    inPath = os.path.join(dirConvert,file)
+    outPath = inPath[:-lenExt] + extOut
+    commandString = '"' + inkscapePath +   '" --file="' + inPath + '" ' + extOutArgument + '"' + outPath + '"'
+    subprocess.run(commandString)
         
