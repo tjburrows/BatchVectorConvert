@@ -58,7 +58,7 @@ for file in files:
 lenExt = len(extIn)
 lenF = len(toConvert)
 for i, file in enumerate(toConvert):
-    print('Converting %d/%d:\t%s' % (i+1,lenF+1,file))
+    print('Converting %d/%d:\t%s' % (i+1,lenF,file))
     inPath = join(dirConvert,file)
     outPath = inPath[:-lenExt] + extOut
     commandString = '"' + inkscapePath +   '" --file="' + inPath + '" ' + extOutArgument + '"' + outPath + '"'
